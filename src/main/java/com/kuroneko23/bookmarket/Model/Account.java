@@ -15,17 +15,18 @@ public class Account {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "uuid", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
+    @Column(name = "uuid", updatable = false, nullable = false, columnDefinition = "NVARCHAR(36)")
     private String uuid;
-    @Column(name = "hashedPassword", updatable = true, nullable = false, columnDefinition = "VARCHAR(61)")
+    @Column(name = "hashedPassword", updatable = true, nullable = false, columnDefinition = "NVARCHAR(61)")
     private String hashedPassword;
-    @Column
+    @Column(columnDefinition = "NVARCHAR(250)")
     private String email;
-    @Column
+    @Column(columnDefinition = "DATE")
     private Date updateDate;
-    @Column
+    @Column(columnDefinition = "DATE")
     private Date createDate;
 
+    @Column(columnDefinition = "NVARCHAR(10)")
     private String role;
 
     //region Constructor

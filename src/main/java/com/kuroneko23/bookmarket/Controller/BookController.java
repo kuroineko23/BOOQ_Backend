@@ -36,9 +36,7 @@ public class BookController {
         }
 
         Book newBook = new Book();
-        newBook.setActive(true);
         newBook.setCategory(req.getCategory());
-        newBook.setAltTitle(req.getAltTitle());
         newBook.setPrice(req.getPrice());
         newBook.setDescription(req.getDescription());
         newBook.setImage(uuid);

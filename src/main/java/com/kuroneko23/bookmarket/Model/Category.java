@@ -13,9 +13,9 @@ public class Category {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "uuid", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
+    @Column(name = "uuid", updatable = false, nullable = false, columnDefinition = "NVARCHAR(36)")
     private String uuid;
-    @Column
+    @Column(columnDefinition = "NVARCHAR(100)")
     private String category;
     @Column
     private String description;

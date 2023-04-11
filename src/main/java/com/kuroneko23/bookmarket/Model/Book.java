@@ -1,10 +1,10 @@
 package com.kuroneko23.bookmarket.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Entity
 @Table(name = "book")
@@ -12,24 +12,25 @@ public class Book {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "uuid", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
+    @Column(name = "uuid", updatable = false, nullable = false, columnDefinition = "NVARCHAR(36)")
     private String uuid;
-    @Column(columnDefinition = "VARCHAR(36)")
+    @Column(columnDefinition = "NVARCHAR(36)")
+    private String owner;
+    @Column(columnDefinition = "NVARCHAR(36)")
     private String category;
-    @Column
+    @Column(columnDefinition = "NVARCHAR(250)")
+    private String author;
+    @Column(columnDefinition = "NVARCHAR(36)")
     private String image;
-    @Column
+    @Column(columnDefinition = "int")
+    private int qty;
+    @Column(columnDefinition = "NVARCHAR(250)")
     private String title;
-    @Column
-    private String altTitle;
-    @Column
+    @Column(columnDefinition = "NVARCHAR(MAX)")
     private String description;
-    @Column
+    @Digits(integer = 12, fraction = 2)
+    @Column(columnDefinition = "decimal(12,2)")
     private BigDecimal price;
-    @Column
-    private Boolean isActive;
-    @Column
-    private Boolean isSoldOut;
 
     public Book() {
     }
@@ -67,14 +68,6 @@ public class Book {
         this.title = title;
     }
 
-    public String getAltTitle() {
-        return altTitle;
-    }
-
-    public void setAltTitle(String altTitle) {
-        this.altTitle = altTitle;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -91,20 +84,29 @@ public class Book {
         this.price = price;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public int getQty() {
+        return qty;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
-    public Boolean getSoldOut() {
-        return isSoldOut;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setSoldOut(Boolean soldOut) {
-        isSoldOut = soldOut;
+    public void setAuthor(String author) {
+        this.author = author;
     }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     //endregion
 }
